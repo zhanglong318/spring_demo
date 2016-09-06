@@ -7,6 +7,7 @@ import org.springframework.core.io.ClassPathResource;
 public class SpringTest {
 
     public static void main(String[] args) {
+
         ClassPathResource resource = new ClassPathResource("beans.xml");
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
 
@@ -15,5 +16,9 @@ public class SpringTest {
 
         Person person = (Person) factory.getBean("person");
         System.out.println(person.say());
+
+        java.util.Stack s = null;
+
+        ClassLoader c = null;
     }
 }
