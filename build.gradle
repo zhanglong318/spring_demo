@@ -1,0 +1,58 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+group 'com.test'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+ext {
+    springFrameworkVersion = '4.2.6.RELEASE'
+}
+
+dependencies {
+    compile (
+            "org.springframework:spring2-core:${springFrameworkVersion}",
+            "org.springframework:spring2-aop:${springFrameworkVersion}",
+            "org.springframework:spring2-web:${springFrameworkVersion}",
+            "org.springframework:spring2-webmvc:${springFrameworkVersion}",
+            "org.springframework:spring2-tx:${springFrameworkVersion}",
+            "org.springframework:spring2-context:${springFrameworkVersion}",
+            "org.springframework:spring2-context-support:${springFrameworkVersion}",
+            "org.springframework:spring2-expression:${springFrameworkVersion}",
+            "org.springframework:spring2-beans:${springFrameworkVersion}"
+    )
+
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+[compileJava, javadoc, compileTestJava]*.options*.encoding = "UTF-8"
